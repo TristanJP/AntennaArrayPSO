@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.Random;
+import java.util.Arrays;
 
 /** Antenna array design problem */
 public class AntennaArray {
@@ -35,7 +36,7 @@ public class AntennaArray {
 
     }
 
-    private double[] generateDesign() {
+    public double[] generateDesign() {
         Random rand = new Random();
         int i = 0;
         double[] design = new double[n_antennae];
@@ -53,6 +54,7 @@ public class AntennaArray {
             i = 0;
 
         }
+        Arrays.sort(design);
         return design;
 
     }
