@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.lang.Math;
 
@@ -10,8 +11,8 @@ public class Particle {
     private double[] velocity;
     private Random rand = new Random();
 
-    private static final double inertialCoefficient = (1/(2 * Math.log(2.0)))/2;
-    private static final double cognitiveCoefficient = ((Math.log(2)) + 0.5)/2;
+    private static final double inertialCoefficient = (1/(2 * Math.log(2.0)));
+    private static final double cognitiveCoefficient = ((Math.log(2)) + 0.5);
 
     public static void main(String[] args) {
         AntennaArray antArr = new AntennaArray(3, 90.0);
@@ -29,6 +30,7 @@ public class Particle {
     public void updatePersonalBest(double[] newPosition, double newCost) {
         bestPosition = newPosition;
         bestPositionCost = newCost;
+        //System.out.println(this + ": New personal best:" + Arrays.toString(bestPosition) + " - " + bestPositionCost);
     }
 
     public void updatePosition(double[] newPosition) {

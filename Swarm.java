@@ -25,7 +25,7 @@ public class Swarm {
         System.out.println(swarm.globalBestCost);
         System.out.println(Arrays.toString(swarm.globalBestPosition));
 
-        swarm.swarmSearch(100);
+        swarm.swarmSearch(200);
 
         System.out.println("\nNEW:");
         System.out.println(swarm.globalBestCost);
@@ -56,6 +56,7 @@ public class Swarm {
                 if (newCost < newGlobalBestCost) {
                     newGlobalBestCost = newCost;
                     newGlobalBestPosition = newPosition;
+                    System.out.println("======= " + Arrays.toString(newGlobalBestPosition) + " - " + newGlobalBestCost + " =======");
                 }
             }
             
