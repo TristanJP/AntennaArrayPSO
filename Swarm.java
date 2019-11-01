@@ -11,8 +11,8 @@ public class Swarm {
     public static void main(String[] args) {
         Swarm swarm = new Swarm();
 
-        int size = 3;
-        swarm.antArr = new AntennaArray(size, 90.0);
+        int size = 5;
+        swarm.antArr = new AntennaArray(size, 70.0);
 
         int swarmSize = (int) Math.ceil(20.0 + Math.sqrt((double) size));
 

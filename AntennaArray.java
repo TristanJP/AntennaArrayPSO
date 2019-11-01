@@ -45,7 +45,7 @@ public class AntennaArray {
         while (!valid) {
             while (i < n_antennae -1) {
 
-                design[i] = rand.nextDouble() * 1.5;
+                design[i] = rand.nextDouble() * n_antennae/2.0;
                 i++;
             }
             design[n_antennae-1] = ((double)n_antennae)/2.0;

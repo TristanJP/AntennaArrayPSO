@@ -9,9 +9,10 @@ public class Particle {
     public double bestPositionCost;
     private double[] velocity;
     private Random rand = new Random();
+    private int size;
 
-    private static final double inertialCoefficient = (1/(2 * Math.log(2.0)))/2;
-    private static final double cognitiveCoefficient = ((Math.log(2)) + 0.5)/2;
+    private static final double inertialCoefficient = (1/(2 * Math.log(2.0)))/8;
+    private static final double cognitiveCoefficient = ((Math.log(2)) + 0.5)/8;
 
     public static void main(String[] args) {
         AntennaArray antArr = new AntennaArray(3, 90.0);
@@ -23,7 +24,12 @@ public class Particle {
     public Particle(double[] startingPos, double startingCost, double[] randomPosition) {
         currentPosition = startingPos;
         bestPosition = startingPos;
-        velocity = new double[]{(randomPosition[0] + currentPosition[0])/2, (randomPosition[1] + currentPosition[1])/2};
+        size = startingPos.length;
+        velocity = new double[size];
+
+        for (int i = 0; i < size; i++){
+            velocity[i] = (randomPosition[i] + currentPosition[i])/2;
+        }
     }
 
     public void updatePersonalBest(double[] newPosition, double newCost) {
@@ -40,7 +46,11 @@ public class Particle {
     }
 
     private double[] calculateNewVelocity(double[] globalBestPosition) {
-        return new double[]{velocityOnAxis(globalBestPosition, 0), velocityOnAxis(globalBestPosition, 1)};
+        double[] newVelocity = new double[size];
+        for (int i = 0; i < size; i++){
+            newVelocity[i] = velocityOnAxis(globalBestPosition, i);
+        }
+        return newVelocity;
     }
 
     private double velocityOnAxis(double[] globalBestPosition, int axis) {
@@ -50,7 +60,12 @@ public class Particle {
 
     public double[] move(double[] globalBestPosition) {
         velocity = calculateNewVelocity(globalBestPosition);
-        double[] newPosition = new double[]{currentPosition[0] + velocity[0], currentPosition[1] + velocity[1], 1.5};
+
+        double[] newPosition = new double[size];
+        for (int i = 0; i < size-1; i++){
+            newPosition[i] = currentPosition[i] + velocity[i];
+        }
+        newPosition[size-1] = size/2.0;
 
         currentPosition = newPosition;
 
