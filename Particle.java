@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 import java.lang.Math;
 
@@ -35,6 +36,7 @@ public class Particle {
     public void updatePersonalBest(double[] newPosition, double newCost) {
         bestPosition = newPosition;
         bestPositionCost = newCost;
+        //System.out.println(this + ": New personal best:" + Arrays.toString(bestPosition) + " - " + bestPositionCost);
     }
 
     public void updatePosition(double[] newPosition) {
