@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Random;
 import java.lang.Math;
 
@@ -12,8 +11,8 @@ public class Particle {
     private Random rand = new Random();
     private int size;
 
-    private static final double inertialCoefficient = (1/(2 * Math.log(2.0)))/8;
-    private static final double cognitiveCoefficient = ((Math.log(2)) + 0.5)/8;
+    private static final double inertialCoefficient = (1/(2 * Math.log(2.0)));
+    private static final double cognitiveCoefficient = ((Math.log(2)) + 0.5);
 
     public static void main(String[] args) {
         AntennaArray antArr = new AntennaArray(3, 90.0);

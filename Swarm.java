@@ -11,8 +11,8 @@ public class Swarm {
     public static void main(String[] args) {
         Swarm swarm = new Swarm();
 
-        int size = 5;
-        swarm.antArr = new AntennaArray(size, 70.0);
+        int size = 3;
+        swarm.antArr = new AntennaArray(size, 90.0);
 
         int swarmSize = (int) Math.ceil(20.0 + Math.sqrt((double) size));
 
@@ -23,9 +23,9 @@ public class Swarm {
 
         System.out.println("OLD");
         System.out.println(swarm.globalBestCost);
-        System.out.println(Arrays.toString(swarm.globalBestPosition));
+        System.out.println(Arrays.toString(swarm.globalBestPosition) + "\n");
 
-        swarm.swarmSearch(200);
+        swarm.swarmSearch(400);
 
         System.out.println("\nNEW:");
         System.out.println(swarm.globalBestCost);
@@ -34,12 +34,12 @@ public class Swarm {
     }
 
     private void swarmSearch(int steps) {
-        for (int i = 0; i < steps; i++) {
-            swarmSearchStep();
+        for (int i = 1; i <= steps; i++) {
+            swarmSearchStep(i);
         }
     }
 
-    private void swarmSearchStep() {
+    private void swarmSearchStep(int step) {
         double[] newGlobalBestPosition = globalBestPosition;
         double newGlobalBestCost = globalBestCost;
 
@@ -56,7 +56,7 @@ public class Swarm {
                 if (newCost < newGlobalBestCost) {
                     newGlobalBestCost = newCost;
                     newGlobalBestPosition = newPosition;
-                    System.out.println("======= " + Arrays.toString(newGlobalBestPosition) + " - " + newGlobalBestCost + " =======");
+                    System.out.println(step + ") " + Arrays.toString(newGlobalBestPosition) + " - (" + newGlobalBestCost + ")");
                 }
             }
             
